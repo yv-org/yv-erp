@@ -1,0 +1,43 @@
+// ======================================================
+// User Profile Service (NO AUTH DATA)
+// ======================================================
+
+application {
+  config {
+    baseName userprofile
+    applicationType microservice
+    packageName com.youthvision.erp.userprofile
+    authenticationType oauth2
+    serviceDiscoveryType consul
+    buildTool gradle
+    serverPort 8085
+    databaseType sql
+    prodDatabaseType postgresql
+    devDatabaseType postgresql
+    reactive true
+  }
+  entities UserProfile
+}
+
+// ======================================================
+// Entities
+// ======================================================
+
+@entityAudit
+entity UserProfile {
+  keycloakUserId String required unique  // sub from JWT
+  employeeCode String
+  fullName String
+  designation String
+  department String
+  organization String
+  mobileNumber String
+  isActive Boolean required
+}
+
+// ======================================================
+// Relationships
+// (NO relationship to JHipster User entity)
+// ======================================================
+
+// none
