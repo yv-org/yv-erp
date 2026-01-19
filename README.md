@@ -116,6 +116,16 @@ Once logged in, you can:
 
 The interface is intuitive and guides you through various workflows. For specific features, refer to the user documentation or explore the menus.
 
+## Dashboard UI
+
+The standalone Fuse dashboard lives in the `dashboard/` folder and keeps its UI separate from the gateway UI (http://localhost:8080).
+
+- Run the gateway backend first to inject the APIs that the dashboard consumes.
+- From the dashboard directory run `npm install` (first time) and `npm run start` to launch the dashboard on http://localhost:4200.
+- The dashboard prepends `/api`, `/management`, and `/services` requests with `http://localhost:8080` via the `ApiBaseUrlInterceptor`. The endpoint is configured in `dashboard/src/environments/environment.ts`.
+- Toggle `useMockApi` in `src/environments/environment*.ts` when you need to fall back to the local mock services.
+- When building for production, adjust `environment.prod.ts` to point `apiUrl` at the production gateway host and deploy the dashboard bundle separately from the gateway backend.
+
 ## Development
 
 For development work:
