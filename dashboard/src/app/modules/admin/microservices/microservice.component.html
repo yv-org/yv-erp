@@ -1,0 +1,125 @@
+<ng-container *ngIf="microservice; else notFound">
+    <div class="microservice-shell space-y-8 px-6 py-8 md:px-10 lg:px-12">
+        <header class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            <div>
+                <div class="text-xs uppercase tracking-[0.4em] text-slate-400">Microservice</div>
+                <h1 class="text-4xl font-semibold text-slate-900">
+                    {{ microservice.name }}
+                </h1>
+                <p class="max-w-3xl text-sm text-slate-500">
+                    {{ microservice.description }}
+                </p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+                <span
+                    class="inline-flex items-center rounded-full border border-teal-200 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-teal-600"
+                >
+                    {{ microservice.status }}
+                </span>
+                <button
+                    mat-stroked-button
+                    color="primary"
+                    routerLink="/super-admin"
+                >
+                    Back to console
+                </button>
+            </div>
+        </header>
+
+        <section class="grid gap-6 md:grid-cols-3">
+            <article class="rounded-3xl border border-gray-200 bg-card p-5 shadow-sm">
+                <div class="text-xs uppercase tracking-[0.3em] text-slate-400">
+                    Owner
+                </div>
+                <div class="text-lg font-semibold text-slate-900">
+                    {{ microservice.owner }}
+                </div>
+                <div class="mt-2 text-xs text-slate-400">
+                    Last deploy {{ microservice.lastDeploy }}
+                </div>
+            </article>
+            <article class="rounded-3xl border border-gray-200 bg-card p-5 shadow-sm">
+                <div class="text-xs uppercase tracking-[0.3em] text-slate-400">
+                    Uptime
+                </div>
+                <div class="text-3xl font-semibold text-slate-900">
+                    {{ microservice.uptime }}
+                </div>
+                <div class="mt-2 text-xs text-muted">
+                    Version {{ microservice.version }}
+                </div>
+            </article>
+            <article class="rounded-3xl border border-gray-200 bg-card p-5 shadow-sm">
+                <div class="text-xs uppercase tracking-[0.3em] text-muted">
+                    Endpoint count
+                </div>
+                <div class="text-3xl font-semibold text-slate-900">
+                    {{ microservice.endpoints.length }}
+                </div>
+                <div class="mt-2 text-xs text-muted">
+                    Metrics + health
+                </div>
+            </article>
+        </section>
+
+        <section class="grid gap-6 lg:grid-cols-2">
+            <article class="rounded-3xl border border-gray-200 bg-card p-6 shadow-sm">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-xs uppercase tracking-[0.3em] text-muted">
+                            Key stats
+                        </div>
+                <p class="text-lg font-semibold text-slate-900">Operational snapshot</p>
+                    </div>
+                </div>
+                <div class="mt-4 space-y-3 text-sm text-slate-500">
+                    <div
+                        *ngFor="let stat of microservice.stats"
+                        class="flex items-center justify-between"
+                    >
+                        <span>{{ stat.label }}</span>
+                        <span class="font-semibold text-slate-900">{{ stat.value }}</span>
+                    </div>
+                </div>
+            </article>
+            <article class="rounded-3xl border border-gray-200 bg-card p-6 shadow-sm">
+                <div class="text-xs uppercase tracking-[0.3em] text-slate-400">
+                    Available endpoints
+                </div>
+                <div class="mt-4 space-y-3 text-sm">
+                    <div
+                        *ngFor="let endpoint of microservice.endpoints"
+                        class="flex flex-col rounded-2xl border border-gray-200 bg-white/5 px-4 py-3"
+                    >
+                        <span class="text-xs font-semibold uppercase tracking-[0.3em] text-muted">
+                            {{ endpoint.label }}
+                        </span>
+                        <span class="text-sm text-slate-900">{{ endpoint.path }}</span>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </div>
+</ng-container>
+
+<ng-template #notFound>
+    <div class="flex min-h-screen flex-col items-center justify-center px-6 py-10 text-center">
+        <p class="text-sm font-semibold uppercase tracking-[0.4em] text-muted">
+            Microservice not available
+        </p>
+        <h2 class="mt-4 text-3xl font-semibold text-slate-900">
+            We could not find that dashboard
+        </h2>
+        <p class="mt-2 text-sm text-muted">
+            Select one of the registered microservices from the super admin console.
+        </p>
+        <button
+            mat-stroked-button
+            color="primary"
+            class="mt-6"
+            routerLink="/super-admin"
+        >
+            Back to super admin console
+        </button>
+    </div>
+</ng-template>

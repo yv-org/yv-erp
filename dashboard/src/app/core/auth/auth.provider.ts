@@ -11,6 +11,6 @@ import { AuthService } from 'app/core/auth/auth.service';
 export const provideAuth = (): Array<Provider | EnvironmentProviders> => {
     return [
         provideHttpClient(withInterceptors([authInterceptor])),
-        provideEnvironmentInitializer(() => inject(AuthService)),
+        provideEnvironmentInitializer(() => inject(AuthService).init()),
     ];
 };

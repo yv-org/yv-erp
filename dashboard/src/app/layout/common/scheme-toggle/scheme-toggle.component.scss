@@ -1,0 +1,25 @@
+.scheme-toggle {
+    position: fixed;
+    right: 1.25rem;
+    top: 1.25rem;
+    z-index: 1100;
+    gap: 0.25rem;
+    display: flex;
+    padding: 0.25rem;
+    border-radius: 999px;
+    backdrop-filter: blur(12px);
+    background: rgba(15, 23, 42, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.scheme-btn {
+    width: 36px;
+    height: 36px;
+    color: rgba(255, 255, 255, 0.8);
+    transition: background 0.2s, color 0.2s;
+}
+
+.scheme-btn--active {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}

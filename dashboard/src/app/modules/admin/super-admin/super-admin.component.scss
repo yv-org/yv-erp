@@ -1,0 +1,16 @@
+:host {
+    display: block;
+    width: 100%;
+}
+
+.admin-shell {
+    width: 100%;
+    max-width: min(1400px, 100%);
+    margin: 0 auto;
+}
+
+.microservice-card {
+    min-height: 320px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(16px);
+}

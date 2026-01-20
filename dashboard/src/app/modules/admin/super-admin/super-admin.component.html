@@ -1,0 +1,144 @@
+<div class="admin-shell space-y-10 px-6 py-8 md:px-10 lg:px-12">
+    <section class="space-y-6">
+        <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <div class="max-w-3xl space-y-3 text-white">
+                <div class="text-xs uppercase tracking-[0.4em] text-white/60">
+                    Super Admin Console
+                </div>
+                <div class="flex items-center gap-2 flex-wrap">
+                    <h1 class="text-4xl font-semibold">Microservice Control Hub</h1>
+                    <span
+                        class="rounded-full border border-white/50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em]"
+                    >
+                        FUTURISTIC · BRAND
+                    </span>
+                </div>
+                <p class="max-w-2xl text-sm text-white/70">
+                    One place for the super admin to monitor every service. The
+                    command console keeps heat maps, latency, and version health in
+                    sync so you always know the status before handing access to
+                    individual teams.
+                </p>
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+                <button
+                    mat-flat-button
+                    color="accent"
+                    routerLink="/microservices/gateway"
+                >
+                    Gateway dashboard
+                </button>
+                <button
+                    mat-stroked-button
+                    color="accent"
+                    routerLink="/microservices/user-service"
+                >
+                    User service
+                </button>
+                <button
+                    mat-stroked-button
+                    color="accent"
+                    routerLink="/microservices/reporting-service"
+                >
+                    Reporting insights
+                </button>
+            </div>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-3">
+            <article
+                class="rounded-2xl border border-white/10 bg-white/5 p-5 text-white/90 shadow-lg"
+            >
+                <div class="text-xs uppercase tracking-[0.3em] text-white/60">
+                    Active services
+                </div>
+                <div class="text-3xl font-semibold">
+                    {{ microservices.length }}
+                </div>
+                <p class="text-xs text-white/60">
+                    {{ degradedServices ? degradedServices : 'All clear' }}
+                    showing green
+                </p>
+            </article>
+            <article
+                class="rounded-2xl border border-white/10 bg-white/5 p-5 text-white/90 shadow-lg"
+            >
+                <div class="text-xs uppercase tracking-[0.3em] text-white/60">
+                    Signal integrity
+                </div>
+                <div class="text-3xl font-semibold">{{ averageUptime }}</div>
+                <p class="text-xs text-white/60">Uptime over the last 24 hours</p>
+            </article>
+            <article
+                class="rounded-2xl border border-white/10 bg-white/5 p-5 text-white/90 shadow-lg"
+            >
+                <div class="text-xs uppercase tracking-[0.3em] text-white/60">
+                    All incidents
+                </div>
+                <div class="text-3xl font-semibold">
+                    {{ degradedServices }}
+                </div>
+                <p class="text-xs text-white/60">
+                    microservices require developer scrutiny
+                </p>
+            </article>
+        </div>
+    </section>
+
+    <section>
+        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <article
+                *ngFor="let service of microservices"
+                class="microservice-card rounded-3xl p-6 text-white shadow-2xl"
+                [style.background]="service.gradient"
+            >
+                <div class="flex items-start justify-between gap-4">
+                    <div>
+                        <div class="text-xs uppercase tracking-[0.3em] text-white/75">
+                            {{ service.status }}
+                        </div>
+                        <h3 class="text-xl font-semibold">{{ service.name }}</h3>
+                    </div>
+                    <span
+                        class="rounded-full border border-white/40 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em]"
+                    >
+                        v{{ service.version }}
+                    </span>
+                </div>
+                <p class="mt-3 text-sm text-white/80">{{ service.description }}</p>
+                <div class="mt-4 space-y-1 text-xs text-white/80">
+                    <div class="flex items-center justify-between">
+                        <span>Owner</span>
+                        <strong>{{ service.owner }}</strong>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span>Uptime</span>
+                        <strong>{{ service.uptime }}</strong>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span>Last deploy</span>
+                        <strong>{{ service.lastDeploy }}</strong>
+                    </div>
+                </div>
+                <div class="mt-4 space-y-2 text-xs text-white/80">
+                    <div
+                        *ngFor="let stat of service.stats"
+                        class="flex items-center justify-between"
+                    >
+                        <span>{{ stat.label }}</span>
+                        <span class="font-semibold">{{ stat.value }}</span>
+                    </div>
+                </div>
+                <div class="mt-5 flex flex-wrap gap-2">
+                    <button
+                        mat-stroked-button
+                        color="primary"
+                        [routerLink]="['/microservices', service.id]"
+                    >
+                        View service dashboard
+                    </button>
+                </div>
+            </article>
+        </div>
+    </section>
+</div>
