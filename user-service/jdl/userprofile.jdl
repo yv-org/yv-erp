@@ -7,14 +7,14 @@ application {
     baseName userprofile
     applicationType microservice
     packageName com.youthvision.erp.userprofile
-    authenticationType oauth2
+    authenticationType jwt
     serviceDiscoveryType consul
     buildTool gradle
     serverPort 8085
     databaseType sql
     prodDatabaseType postgresql
     devDatabaseType postgresql
-    reactive true
+    reactive false
   }
   entities UserProfile
 }
@@ -25,19 +25,17 @@ application {
 
 @entityAudit
 entity UserProfile {
-  keycloakUserId String required unique  // sub from JWT
-  employeeCode String
-  fullName String
+  keycloakUserId UUID required unique  // sub from JWT
+  employeeCode String unique
+  fullName String required
   designation String
   department String
   organization String
-  mobileNumber String
+  mobileNumber String maxlength(15)
   isActive Boolean required
 }
 
 // ======================================================
 // Relationships
-// (NO relationship to JHipster User entity)
 // ======================================================
-
-// none
+// NONE – decoupled from auth service

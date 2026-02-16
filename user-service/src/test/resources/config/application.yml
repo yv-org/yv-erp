@@ -15,7 +15,7 @@
 
 spring:
   application:
-    name: userService
+    name: userservice
   cloud:
     consul:
       discovery:
@@ -47,13 +47,13 @@ spring:
           principal-claim-name: preferred_username
   task:
     execution:
-      thread-name-prefix: user-service-task-
+      thread-name-prefix: userservice-task-
       pool:
         core-size: 1
         max-size: 50
         queue-capacity: 10000
     scheduling:
-      thread-name-prefix: user-service-scheduling-
+      thread-name-prefix: userservice-scheduling-
       pool:
         size: 20
   thymeleaf:
@@ -70,9 +70,9 @@ server:
 # ===================================================================
 jhipster:
   clientApp:
-    name: 'userServiceApp'
+    name: 'userserviceApp'
   mail:
-    from: userService@localhost.com
+    from: userservice@localhost.com
     base-url: http://127.0.0.1:8080
   logging:
     # To test json console appender

@@ -1,0 +1,27 @@
+// ======================================================
+// User Service (AUTH & IDENTITY ONLY)
+// ======================================================
+
+application {
+  config {
+    baseName userservice
+    applicationType microservice
+    packageName com.youthvision.erp.userservice
+    authenticationType oauth2
+    serviceDiscoveryType consul
+    buildTool gradle
+    serverPort 8081
+    databaseType sql
+    prodDatabaseType postgresql
+    devDatabaseType postgresql
+    reactive false
+  }
+  // No business entities here
+}
+
+// ======================================================
+// NO ENTITIES
+// ======================================================
+
+// Identity is managed by Keycloak
+// Users, passwords, roles live in Keycloak

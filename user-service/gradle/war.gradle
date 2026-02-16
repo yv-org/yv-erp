@@ -1,7 +1,7 @@
 apply plugin: "war"
 
 bootWar {
-    mainClass = "com.youthvision.erp.UserServiceApp"
+    mainClass = "com.youthvision.erp.userservice.UserserviceApp"
     includes = ["WEB-INF/**", "META-INF/**"]
 }
 

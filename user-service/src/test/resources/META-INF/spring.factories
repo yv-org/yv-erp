@@ -1,2 +1,4 @@
 org.springframework.test.context.ContextCustomizerFactory = \
-    com.youthvision.erp.config.SqlTestContainersSpringContextCustomizerFactory
+    com.youthvision.erp.config.\
+    SqlTestContainersSpringContextCustomizerFactory,com.youthvision.erp.\
+    userservice.config.SqlTestContainersSpringContextCustomizerFactory

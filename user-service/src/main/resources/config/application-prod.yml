@@ -17,7 +17,7 @@ logging:
   level:
     ROOT: INFO
     tech.jhipster: INFO
-    com.youthvision.erp: INFO
+    com.youthvision.erp.userservice: INFO
 
 management:
   prometheus:
@@ -45,8 +45,8 @@ spring:
       port: 8500
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/userService
-    username: userService
+    url: jdbc:postgresql://localhost:5432/userservice
+    username: userservice
     password:
     hikari:
       poolName: Hikari
