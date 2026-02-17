@@ -18,6 +18,7 @@
     "feignClient": null,
     "gradleEnterpriseHost": null,
     "jhipsterVersion": "8.11.0",
+    "jwtSecretKey": "N2FjOGNjZTU5Njc0NGRjOTRhZjZhMmEyOWEwMzZkMzVjNzFjZWRiNjIxZTA0M2UxZGI4NzI1MGUxOGE1NzBhMDUzMDc5ZjJkMTc2MDBkMzkzZTAyNTkwMTU1ZGNkNGFjYWJhMjU1ZmE5OTUxYmE0YmM1MzFhZDEzOTkzNzE3NWI=",
     "microfrontend": false,
     "microfrontends": [],
     "monorepository": true,

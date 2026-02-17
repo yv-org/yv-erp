@@ -1,0 +1,84 @@
+{
+  "realm": "youth-vision",
+  "enabled": true,
+  "displayName": "Youth Vision Platform",
+  "roles": {
+    "realm": [
+      {
+        "name": "ROLE_ADMIN",
+        "description": "System Administrator"
+      },
+      {
+        "name": "ROLE_STUDENT",
+        "description": "Student User"
+      },
+      {
+        "name": "ROLE_VOLUNTEER",
+        "description": "Volunteer User"
+      },
+      {
+        "name": "ROLE_DONOR",
+        "description": "Donor User"
+      }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "gateway-service",
+      "name": "Gateway Service",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "publicClient": true,
+      "directAccessGrantsEnabled": true,
+      "standardFlowEnabled": true,
+      "serviceAccountsEnabled": false,
+      "redirectUris": [
+        "http://localhost:8081/*",
+        "http://localhost:3000/*"
+      ],
+      "webOrigins": [
+        "http://localhost:8081",
+        "http://localhost:3000"
+      ],
+      "attributes": {
+        "post.logout.redirect.uris": "+"
+      }
+    }
+  ],
+  "users": [
+    {
+      "username": "admin",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "System",
+      "lastName": "Admin",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "admin123",
+          "temporary": false
+        }
+      ],
+      "realmRoles": [
+        "ROLE_ADMIN"
+      ]
+    },
+    {
+      "username": "student1",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Test",
+      "lastName": "Student",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "student123",
+          "temporary": false
+        }
+      ],
+      "realmRoles": [
+        "ROLE_STUDENT"
+      ]
+    }
+  ]
+}
